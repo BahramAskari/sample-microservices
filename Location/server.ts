@@ -2,7 +2,7 @@ import express, {Application, Request, Response} from "express";
 import { createServer, Server as HTTPServer } from "http";
 
 require('dotenv').config({path: './config/.env'})
-const { environment } = require("./config");
+//const { environment } = require("./config");
 
 const helmet = require("helmet");
 const cors = require('cors')
@@ -16,13 +16,16 @@ const port = normalizePort(process.env.PORT || '3000');
  * Packages & Modules
  */
 
-const debug = require("debug")("Location");
+const debug = require("debug")("User-Management");
 import bodyParser from "body-parser";
 
 import path from 'path';
 import cookieParser from 'cookie-parser';
 import lessMiddleware from 'less-middleware';
 import ErrorHandlerMiddleware from "./api/middlewares/ErrorHandler.middleware";
+const morgan = require("morgan");
+
+//const isProduction = environment === "production";
 
 
 /**
@@ -41,7 +44,6 @@ const corsOptions = {
 export class Server {
     private httpServer: HTTPServer;
     private app: Application;
-
     private readonly DEFAULT_PORT = port;
 
     constructor() {
@@ -52,6 +54,8 @@ export class Server {
 
         this.app = express();
         this.app.set("port", this.DEFAULT_PORT)
+        //this.app.set("socket", this.notificationSocket)
+        this.httpServer = createServer(this.app);
 
         this.dbInitialize();
         this.handleSecurity();
@@ -101,6 +105,7 @@ export class Server {
 
     private handleRoutes(): void {
 
+        // this.app.use("/api/v1", user_routes);
         this.app.use("/api/v1", routes);
 
         this.app.use(ErrorHandlerMiddleware);
@@ -115,14 +120,15 @@ export class Server {
 
         this.httpServer.listen( this.DEFAULT_PORT, () =>
             callback(parseInt(this.DEFAULT_PORT)
-        ))
+            ))
         //  this.httpServer.on('listening', this.onListening);
         this.httpServer.on('error', onError);
 
     }
 
-
 }
+
+
 
 
 /**
@@ -154,7 +160,7 @@ function onError(error) {
 
     const bind = typeof port === 'string'
         ? 'Pipe ' + port
-       : 'Port ' + port;
+        : 'Port ' + port;
 
     // handle specific listen errors with friendly messages
     switch (error.code) {

@@ -8,8 +8,6 @@ export const toCountry = (item: Country__Output): Country__Attributes  => ({
     phoneCode: item.phoneCode,
 
     CreatorId: item.CreatorId,
-    NationalLanguageId: item.NationalLanguageId,
-    DefaultFlagId: item.DefaultFlagId,
 
     createdAt: item.createdAt,
     updatedAt: item.updatedAt,
@@ -23,8 +21,6 @@ export const toCountryWithAttached = (item: Country__Output): Country__Output =>
     phoneCode: item.phoneCode,
 
     CreatorId: item.CreatorId,
-    NationalLanguageId: item.NationalLanguageId,
-    DefaultFlagId: item.DefaultFlagId,
 
     createdAt: item.createdAt,
     updatedAt: item.updatedAt,
@@ -32,8 +28,6 @@ export const toCountryWithAttached = (item: Country__Output): Country__Output =>
 
     Creator: item.Creator,
     Provinces: item.Provinces,
-    DefaultFlag: item.DefaultFlag,
-    Flags: item.Flags,
 })
 
 export const toCountryDelete = (deleted: boolean): boolean => deleted

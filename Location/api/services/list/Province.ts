@@ -1,5 +1,5 @@
 import {isBoolean, isEmpty, isNil, isNumber, trim} from "lodash";
-import {City, Country, File, User} from "../../../db/models";
+import {City, Country, User} from "../../../db/models";
 import {Op, Sequelize} from "sequelize";
 import {
     ProvinceDto_GetAll_Payload,
@@ -49,7 +49,6 @@ export default class ProvinceList {
                 {model: User, as: "Creator",
                 },
                 {model: Country,// as: "NationalLanguage",
-                    include: [{model: File, as: "DefaultFlag"}],
                     ...( ( /* payload.type!=="" && */ !isNil(list_itemHas(Filters.countries)) ) &&
                         {
                             required: (!Filters.countries.has && !isEmpty(Filters.countries.ids)) ? true: Filters.countries.has ,
