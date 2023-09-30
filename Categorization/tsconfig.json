@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "target": "ES6",
+    "rootDir": "./",
+    "outDir": "build", // Types should go into this directory.
+    "declaration": false, // Generate d.ts files
+    "esModuleInterop": true
+  },
+  "compileOnSave": true,
+  "exclude": [
+    "node_modules",
+    "packages",
+    "build",
+    "public"
+  ]
+}

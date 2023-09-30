@@ -1,0 +1,1901 @@
+{
+	"info": {
+		"_postman_id": "ee9f5082-2339-4eda-a702-88523be314b5",
+		"name": "Github Resume",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17080430"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"bahram.askari97@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Gateway_BaseUrl}}/auth/login",
+							"host": [
+								"{{Gateway_BaseUrl}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"bahram\", // required\r\n    \"firstName\": \"Bahram\", // required\r\n    \"lastName\": \"\", // optional\r\n    \"email\": \"bahram.askari97@gmail.com\", // required\r\n    \"password\": \"123456\", // required\r\n    \"passwordConfirm\": \"123456\" // required\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Gateway_BaseUrl}}/auth/register",
+							"host": [
+								"{{Gateway_BaseUrl}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refresh access token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_BaseUrl}}/auth/refreshToken/:refreshToken",
+							"host": [
+								"{{Gateway_BaseUrl}}"
+							],
+							"path": [
+								"auth",
+								"refreshToken",
+								":refreshToken"
+							],
+							"variable": [
+								{
+									"key": "refreshToken",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Access_Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_BaseUrl}}/auth/logout",
+							"host": [
+								"{{Gateway_BaseUrl}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_Users_BaseUrl}}",
+							"host": [
+								"{{Gateway_Users_BaseUrl}}"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": null,
+									"description": "number",
+									"disabled": true
+								},
+								{
+									"key": "itemsPerPage",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "isDeleted",
+									"value": null,
+									"description": "boolean",
+									"disabled": true
+								},
+								{
+									"key": "includeDeleted",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "query",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "has_email",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "has_emailValidFormat",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "has_defaultAvatar",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "has_avatar",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "roles[has]",
+									"value": null,
+									"description": "boolean | 0 | 1",
+									"disabled": true
+								},
+								{
+									"key": "roles[ids]",
+									"value": null,
+									"description": "example: 1,2,3,4",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_Users_BaseUrl}}/:id",
+							"host": [
+								"{{Gateway_Users_BaseUrl}}"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check username available",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_Users_BaseUrl}}/check/username/:username",
+							"host": [
+								"{{Gateway_Users_BaseUrl}}"
+							],
+							"path": [
+								"check",
+								"username",
+								":username"
+							],
+							"variable": [
+								{
+									"key": "username",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check username available for user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_Users_BaseUrl}}/:userId/check/username/:username",
+							"host": [
+								"{{Gateway_Users_BaseUrl}}"
+							],
+							"path": [
+								":userId",
+								"check",
+								"username",
+								":username"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": ""
+								},
+								{
+									"key": "username",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check email available",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_Users_BaseUrl}}/check/email/:email",
+							"host": [
+								"{{Gateway_Users_BaseUrl}}"
+							],
+							"path": [
+								"check",
+								"email",
+								":email"
+							],
+							"variable": [
+								{
+									"key": "email",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check email available for user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_Users_BaseUrl}}/:userId/check/email/:email",
+							"host": [
+								"{{Gateway_Users_BaseUrl}}"
+							],
+							"path": [
+								":userId",
+								"check",
+								"email",
+								":email"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": ""
+								},
+								{
+									"key": "email",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"\", // required\r\n    \"firstName\": \"\", // required\r\n    \"lastName\": \"\", // optional\r\n    \"sign\": \"\", // optional\r\n    \"email\": \"\", // required\r\n    \"password\": \"\", // required\r\n    \"roles\": [] // optional\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Gateway_Users_BaseUrl}}",
+							"host": [
+								"{{Gateway_Users_BaseUrl}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"\",\r\n    \"firstName\": \"\",\r\n    \"lastName\": \"\",\r\n    \"sign\": \"\",\r\n    \"email\": \"\",\r\n    \"password\": \"\",\r\n    \"roles\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Gateway_Users_BaseUrl}}/:id",
+							"host": [
+								"{{Gateway_Users_BaseUrl}}"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_Users_BaseUrl}}/:id",
+							"host": [
+								"{{Gateway_Users_BaseUrl}}"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list roles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_Users_BaseUrl}}/:userId/roles",
+							"host": [
+								"{{Gateway_Users_BaseUrl}}"
+							],
+							"path": [
+								":userId",
+								"roles"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add role",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_Users_BaseUrl}}/:userId/role/:roleId",
+							"host": [
+								"{{Gateway_Users_BaseUrl}}"
+							],
+							"path": [
+								":userId",
+								"role",
+								":roleId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": ""
+								},
+								{
+									"key": "roleId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove role",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_Users_BaseUrl}}/:userId/role/:roleId",
+							"host": [
+								"{{Gateway_Users_BaseUrl}}"
+							],
+							"path": [
+								":userId",
+								"role",
+								":roleId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": ""
+								},
+								{
+									"key": "roleId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{Access_Token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Roles",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_Roles_BaseUrl}}?page&itemsPerPage&isDeleted&includeDeleted&query&users[has]&users[ids]",
+							"host": [
+								"{{Gateway_Roles_BaseUrl}}"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": null
+								},
+								{
+									"key": "itemsPerPage",
+									"value": null
+								},
+								{
+									"key": "isDeleted",
+									"value": null
+								},
+								{
+									"key": "includeDeleted",
+									"value": null
+								},
+								{
+									"key": "query",
+									"value": null
+								},
+								{
+									"key": "users[has]",
+									"value": null,
+									"description": "boolean | 0 | 1"
+								},
+								{
+									"key": "users[ids]",
+									"value": null,
+									"description": "example: 1,2,3,4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_Roles_BaseUrl}}/:id",
+							"host": [
+								"{{Gateway_Roles_BaseUrl}}"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"\", // required\r\n    \"description\": \"\", // optional\r\n    \"users\": [] // optional\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Gateway_Roles_BaseUrl}}/:id",
+							"host": [
+								"{{Gateway_Roles_BaseUrl}}"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"\", // optional\r\n    \"description\": \"\", // optional\r\n    \"users\": [] // optional\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Gateway_Roles_BaseUrl}}/:id",
+							"host": [
+								"{{Gateway_Roles_BaseUrl}}"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_Roles_BaseUrl}}/:id",
+							"host": [
+								"{{Gateway_Roles_BaseUrl}}"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_Roles_BaseUrl}}/:roleId/users?page&itemsPerPage&isDeleted&includeDeleted&query&has_email&has_emailValidFormat&has_defaultAvatar&has_avatar",
+							"host": [
+								"{{Gateway_Roles_BaseUrl}}"
+							],
+							"path": [
+								":roleId",
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": null
+								},
+								{
+									"key": "itemsPerPage",
+									"value": null
+								},
+								{
+									"key": "isDeleted",
+									"value": null
+								},
+								{
+									"key": "includeDeleted",
+									"value": null
+								},
+								{
+									"key": "query",
+									"value": null
+								},
+								{
+									"key": "has_email",
+									"value": null
+								},
+								{
+									"key": "has_emailValidFormat",
+									"value": null
+								},
+								{
+									"key": "has_defaultAvatar",
+									"value": null
+								},
+								{
+									"key": "has_avatar",
+									"value": null
+								}
+							],
+							"variable": [
+								{
+									"key": "roleId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_Roles_BaseUrl}}/:roleId/user/:userId",
+							"host": [
+								"{{Gateway_Roles_BaseUrl}}"
+							],
+							"path": [
+								":roleId",
+								"user",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "roleId",
+									"value": ""
+								},
+								{
+									"key": "userId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_Roles_BaseUrl}}/:roleId/user/:userId",
+							"host": [
+								"{{Gateway_Roles_BaseUrl}}"
+							],
+							"path": [
+								":roleId",
+								"user",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "roleId",
+									"value": ""
+								},
+								{
+									"key": "userId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{Access_Token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Tags",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_Tags_BaseUrl}}",
+							"host": [
+								"{{Gateway_Tags_BaseUrl}}"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "itemsPerPage",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "isDeleted",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "includeDeleted",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "query",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_Tags_BaseUrl}}/:id",
+							"host": [
+								"{{Gateway_Tags_BaseUrl}}"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"\", // required\r\n    \"slug\": \"\", // optional\r\n    \"description\": \"\" // optional\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Gateway_Tags_BaseUrl}}",
+							"host": [
+								"{{Gateway_Tags_BaseUrl}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"\", // optional\r\n    \"slug\": \"\", // optional\r\n    \"description\": \"\" // optional\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Gateway_Tags_BaseUrl}}/:id",
+							"host": [
+								"{{Gateway_Tags_BaseUrl}}"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_Tags_BaseUrl}}/:id",
+							"host": [
+								"{{Gateway_Tags_BaseUrl}}"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{Access_Token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Countries",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_Countries_BaseUrl}}?page&itemsPerPage&isDeleted&includeDeleted&query&has_province",
+							"host": [
+								"{{Gateway_Countries_BaseUrl}}"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": null,
+									"description": "number"
+								},
+								{
+									"key": "itemsPerPage",
+									"value": null,
+									"description": "number"
+								},
+								{
+									"key": "isDeleted",
+									"value": null,
+									"description": "boolean | 0 | 1"
+								},
+								{
+									"key": "includeDeleted",
+									"value": null,
+									"description": "boolean | 0 | 1"
+								},
+								{
+									"key": "query",
+									"value": null,
+									"description": "string"
+								},
+								{
+									"key": "has_province",
+									"value": null,
+									"description": "boolean | 0 | 1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_Countries_BaseUrl}}/:id",
+							"host": [
+								"{{Gateway_Countries_BaseUrl}}"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check slug availability",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_Countries_BaseUrl}}/check/slug/:slug",
+							"host": [
+								"{{Gateway_Countries_BaseUrl}}"
+							],
+							"path": [
+								"check",
+								"slug",
+								":slug"
+							],
+							"variable": [
+								{
+									"key": "slug",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"\", // required\r\n    \"phoneCode\": \"\", // required\r\n    \"slug\": \"\", // required\r\n    \"provinces\": [] // optional\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Gateway_Countries_BaseUrl}}",
+							"host": [
+								"{{Gateway_Countries_BaseUrl}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"\", // optional\r\n    \"phoneCode\": \"\", // optional\r\n    \"slug\": \"\", // optional\r\n    \"provinces\": [] // optional\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Gateway_Countries_BaseUrl}}/:id",
+							"host": [
+								"{{Gateway_Countries_BaseUrl}}"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_Countries_BaseUrl}}/:id",
+							"host": [
+								"{{Gateway_Countries_BaseUrl}}"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list provinces",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_Countries_BaseUrl}}/:countryId/provinces?page&itemsPerPage&isDeleted&includeDeleted&query&has_city",
+							"host": [
+								"{{Gateway_Countries_BaseUrl}}"
+							],
+							"path": [
+								":countryId",
+								"provinces"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": null
+								},
+								{
+									"key": "itemsPerPage",
+									"value": null
+								},
+								{
+									"key": "isDeleted",
+									"value": null
+								},
+								{
+									"key": "includeDeleted",
+									"value": null
+								},
+								{
+									"key": "query",
+									"value": null
+								},
+								{
+									"key": "has_city",
+									"value": null,
+									"description": "boolean | 0 | 1"
+								}
+							],
+							"variable": [
+								{
+									"key": "countryId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add province",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_Countries_BaseUrl}}/:countryId/province/:provinceId",
+							"host": [
+								"{{Gateway_Countries_BaseUrl}}"
+							],
+							"path": [
+								":countryId",
+								"province",
+								":provinceId"
+							],
+							"variable": [
+								{
+									"key": "countryId",
+									"value": ""
+								},
+								{
+									"key": "provinceId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove province",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_Countries_BaseUrl}}/:countryId/province/:provinceId",
+							"host": [
+								"{{Gateway_Countries_BaseUrl}}"
+							],
+							"path": [
+								":countryId",
+								"province",
+								":provinceId"
+							],
+							"variable": [
+								{
+									"key": "countryId",
+									"value": ""
+								},
+								{
+									"key": "provinceId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{Access_Token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Provinces",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_Provinces_BaseUrl}}?page&itemsPerPage&isDeleted&includeDeleted&query&has_city&countries[has]&countries[ids]",
+							"host": [
+								"{{Gateway_Provinces_BaseUrl}}"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": null
+								},
+								{
+									"key": "itemsPerPage",
+									"value": null
+								},
+								{
+									"key": "isDeleted",
+									"value": null
+								},
+								{
+									"key": "includeDeleted",
+									"value": null
+								},
+								{
+									"key": "query",
+									"value": null
+								},
+								{
+									"key": "has_city",
+									"value": null,
+									"description": "boolean | 0 | 1"
+								},
+								{
+									"key": "countries[has]",
+									"value": null,
+									"description": "boolean | 0 | 1"
+								},
+								{
+									"key": "countries[ids]",
+									"value": null,
+									"description": "example: 1,2,3,4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_Provinces_BaseUrl}}/:id",
+							"host": [
+								"{{Gateway_Provinces_BaseUrl}}"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check slug availability",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_Provinces_BaseUrl}}/check/slug/:slug",
+							"host": [
+								"{{Gateway_Provinces_BaseUrl}}"
+							],
+							"path": [
+								"check",
+								"slug",
+								":slug"
+							],
+							"variable": [
+								{
+									"key": "slug",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"\", // required\r\n    \"slug\": \"\", // required\r\n    \"CountryId\": \"\", // required\r\n    \"cities\": [] // optional\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Gateway_Provinces_BaseUrl}}",
+							"host": [
+								"{{Gateway_Provinces_BaseUrl}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"\", // optional\r\n    \"slug\": \"\", // optional\r\n    \"CountryId\": \"\", // optional\r\n    \"cities\": [] // optional\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Gateway_Provinces_BaseUrl}}/:id",
+							"host": [
+								"{{Gateway_Provinces_BaseUrl}}"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_Provinces_BaseUrl}}/:id",
+							"host": [
+								"{{Gateway_Provinces_BaseUrl}}"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list cities",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_Provinces_BaseUrl}}/:provinceId/cities?page&itemsPerPage&isDeleted&includeDeleted&query",
+							"host": [
+								"{{Gateway_Provinces_BaseUrl}}"
+							],
+							"path": [
+								":provinceId",
+								"cities"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": null
+								},
+								{
+									"key": "itemsPerPage",
+									"value": null
+								},
+								{
+									"key": "isDeleted",
+									"value": null
+								},
+								{
+									"key": "includeDeleted",
+									"value": null
+								},
+								{
+									"key": "query",
+									"value": null
+								}
+							],
+							"variable": [
+								{
+									"key": "provinceId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add city",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_Provinces_BaseUrl}}/:provinceId/city/:cityId",
+							"host": [
+								"{{Gateway_Provinces_BaseUrl}}"
+							],
+							"path": [
+								":provinceId",
+								"city",
+								":cityId"
+							],
+							"variable": [
+								{
+									"key": "provinceId",
+									"value": ""
+								},
+								{
+									"key": "cityId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove city",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_Provinces_BaseUrl}}/:provinceId/city/:cityId",
+							"host": [
+								"{{Gateway_Provinces_BaseUrl}}"
+							],
+							"path": [
+								":provinceId",
+								"city",
+								":cityId"
+							],
+							"variable": [
+								{
+									"key": "provinceId",
+									"value": ""
+								},
+								{
+									"key": "cityId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{Access_Token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Cities",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_Cities_BaseUrl}}?page&itemsPerPage&isDeleted&includeDeleted&query&provinces[has]&provinces[ids]",
+							"host": [
+								"{{Gateway_Cities_BaseUrl}}"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": null
+								},
+								{
+									"key": "itemsPerPage",
+									"value": null
+								},
+								{
+									"key": "isDeleted",
+									"value": null
+								},
+								{
+									"key": "includeDeleted",
+									"value": null
+								},
+								{
+									"key": "query",
+									"value": null
+								},
+								{
+									"key": "provinces[has]",
+									"value": null,
+									"description": "boolean | 0 | 1"
+								},
+								{
+									"key": "provinces[ids]",
+									"value": null,
+									"description": "example: 1,2,3,4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_Cities_BaseUrl}}/:id",
+							"host": [
+								"{{Gateway_Cities_BaseUrl}}"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"\", // required\r\n    \"slug\": \"\", // required\r\n    \"ProvinceId\": \"\" // required\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Gateway_Cities_BaseUrl}}",
+							"host": [
+								"{{Gateway_Cities_BaseUrl}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"\", // optional\r\n    \"slug\": \"\", // optional\r\n    \"ProvinceId\": \"\" // optional\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Gateway_Cities_BaseUrl}}/:id",
+							"host": [
+								"{{Gateway_Cities_BaseUrl}}"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway_Cities_BaseUrl}}/:id",
+							"host": [
+								"{{Gateway_Cities_BaseUrl}}"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{Access_Token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "Access_Token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhaHJhbS5hc2thcmk5N0BnbWFpbC5jb20iLCJ1c2VySWQiOjEsImlhdCI6MTY5NjAxMjE4MSwiZXhwIjoxNjk2MDk4NTgxfQ.7unlZQCvFAwWztU_D4WVBj2-qMRNWIa2Ros5hC_POO8",
+			"type": "string"
+		},
+		{
+			"key": "Refresh_Token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhaHJhbS5hc2thcmk5N0BnbWFpbC5jb20iLCJ1c2VySWQiOjEsImlhdCI6MTY5NjAxMjE4MSwiZXhwIjoxNjk3MDQ4OTgxfQ.tlzfrkFKQSLino8JAlVf6-2mZ4i-SNvB6WmnJofeqv0",
+			"type": "string"
+		},
+		{
+			"key": "Gateway_BaseUrl",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "Gateway_Users_BaseUrl",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "Gateway_Roles_BaseUrl",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "Gateway_Tags_BaseUrl",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "Gateway_Countries_BaseUrl",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "Gateway_Provinces_BaseUrl",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "Gateway_Cities_BaseUrl",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
