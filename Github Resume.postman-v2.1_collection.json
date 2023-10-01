@@ -1911,37 +1911,37 @@
 		},
 		{
 			"key": "Gateway_BaseUrl",
-			"value": "",
+			"value": "http://127.0.0.1:4008/api/v1",
 			"type": "string"
 		},
 		{
 			"key": "Gateway_Users_BaseUrl",
-			"value": "",
+			"value": "http://127.0.0.1:4008/api/v1/users",
 			"type": "string"
 		},
 		{
 			"key": "Gateway_Roles_BaseUrl",
-			"value": "",
+			"value": "http://127.0.0.1:4008/api/v1/roles",
 			"type": "string"
 		},
 		{
 			"key": "Gateway_Tags_BaseUrl",
-			"value": "",
+			"value": "http://127.0.0.1:4008/api/v1/tags",
 			"type": "string"
 		},
 		{
 			"key": "Gateway_Countries_BaseUrl",
-			"value": "",
+			"value": "http://127.0.0.1:4008/api/v1/countries",
 			"type": "string"
 		},
 		{
 			"key": "Gateway_Provinces_BaseUrl",
-			"value": "",
+			"value": "http://127.0.0.1:4008/api/v1/provinces",
 			"type": "string"
 		},
 		{
 			"key": "Gateway_Cities_BaseUrl",
-			"value": "",
+			"value": "http://127.0.0.1:4008/api/v1/cities",
 			"type": "string"
 		}
 	]
