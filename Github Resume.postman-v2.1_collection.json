@@ -141,60 +141,54 @@
 							"query": [
 								{
 									"key": "page",
-									"value": null,
-									"description": "number",
+									"value": "",
+									"description": "number>0",
 									"disabled": true
 								},
 								{
 									"key": "itemsPerPage",
-									"value": null,
+									"value": "",
+									"description": "number>0",
 									"disabled": true
 								},
 								{
 									"key": "isDeleted",
-									"value": null,
-									"description": "boolean",
+									"value": "",
+									"description": "boolean | 0 | 1",
 									"disabled": true
 								},
 								{
 									"key": "includeDeleted",
-									"value": null,
+									"value": "",
+									"description": "boolean | 0 | 1",
 									"disabled": true
 								},
 								{
 									"key": "query",
-									"value": null,
+									"value": "",
 									"disabled": true
 								},
 								{
 									"key": "has_email",
-									"value": null,
+									"value": "",
+									"description": "boolean | 0 | 1",
 									"disabled": true
 								},
 								{
 									"key": "has_emailValidFormat",
-									"value": null,
-									"disabled": true
-								},
-								{
-									"key": "has_defaultAvatar",
-									"value": null,
-									"disabled": true
-								},
-								{
-									"key": "has_avatar",
-									"value": null,
+									"value": "",
+									"description": "boolean | 0 | 1",
 									"disabled": true
 								},
 								{
 									"key": "roles[has]",
-									"value": null,
+									"value": "",
 									"description": "boolean | 0 | 1",
 									"disabled": true
 								},
 								{
 									"key": "roles[ids]",
-									"value": null,
+									"value": "",
 									"description": "example: 1,2,3,4",
 									"disabled": true
 								}
@@ -219,7 +213,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "2"
+									"value": "1"
 								}
 							]
 						}
@@ -428,6 +422,37 @@
 								":userId",
 								"roles"
 							],
+							"query": [
+								{
+									"key": "page",
+									"value": "",
+									"description": "number>0",
+									"disabled": true
+								},
+								{
+									"key": "itemsPerPage",
+									"value": "",
+									"description": "number>0",
+									"disabled": true
+								},
+								{
+									"key": "isDeleted",
+									"value": "",
+									"description": "boolean | 0 | 1",
+									"disabled": true
+								},
+								{
+									"key": "includeDeleted",
+									"value": "",
+									"description": "boolean | 0 | 1",
+									"disabled": true
+								},
+								{
+									"key": "query",
+									"value": "",
+									"disabled": true
+								}
+							],
 							"variable": [
 								{
 									"key": "userId",
@@ -544,19 +569,23 @@
 							"query": [
 								{
 									"key": "page",
-									"value": null
+									"value": null,
+									"description": "number>0"
 								},
 								{
 									"key": "itemsPerPage",
-									"value": null
+									"value": null,
+									"description": "number>0"
 								},
 								{
 									"key": "isDeleted",
-									"value": null
+									"value": null,
+									"description": "boolean | 0 | 1"
 								},
 								{
 									"key": "includeDeleted",
-									"value": null
+									"value": null,
+									"description": "boolean | 0 | 1"
 								},
 								{
 									"key": "query",
@@ -693,7 +722,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{Gateway_Roles_BaseUrl}}/:roleId/users?page&itemsPerPage&isDeleted&includeDeleted&query&has_email&has_emailValidFormat&has_defaultAvatar&has_avatar",
+							"raw": "{{Gateway_Roles_BaseUrl}}/:roleId/users?page&itemsPerPage&isDeleted&includeDeleted&query&has_email&has_emailValidFormat",
 							"host": [
 								"{{Gateway_Roles_BaseUrl}}"
 							],
@@ -704,19 +733,23 @@
 							"query": [
 								{
 									"key": "page",
-									"value": null
+									"value": null,
+									"description": "number>0"
 								},
 								{
 									"key": "itemsPerPage",
-									"value": null
+									"value": null,
+									"description": "number>0"
 								},
 								{
 									"key": "isDeleted",
-									"value": null
+									"value": null,
+									"description": "boolean | 0 | 1"
 								},
 								{
 									"key": "includeDeleted",
-									"value": null
+									"value": null,
+									"description": "boolean | 0 | 1"
 								},
 								{
 									"key": "query",
@@ -724,19 +757,13 @@
 								},
 								{
 									"key": "has_email",
-									"value": null
+									"value": null,
+									"description": "boolean | 0 | 1"
 								},
 								{
 									"key": "has_emailValidFormat",
-									"value": null
-								},
-								{
-									"key": "has_defaultAvatar",
-									"value": null
-								},
-								{
-									"key": "has_avatar",
-									"value": null
+									"value": null,
+									"description": "boolean | 0 | 1"
 								}
 							],
 							"variable": [
@@ -855,27 +882,31 @@
 							"query": [
 								{
 									"key": "page",
-									"value": null,
+									"value": "",
+									"description": "number>0",
 									"disabled": true
 								},
 								{
 									"key": "itemsPerPage",
-									"value": null,
+									"value": "",
+									"description": "number>0",
 									"disabled": true
 								},
 								{
 									"key": "isDeleted",
-									"value": null,
+									"value": "",
+									"description": "boolean | 0 | 1",
 									"disabled": true
 								},
 								{
 									"key": "includeDeleted",
-									"value": null,
+									"value": "",
+									"description": "boolean | 0 | 1",
 									"disabled": true
 								},
 								{
 									"key": "query",
-									"value": null,
+									"value": "",
 									"disabled": true
 								}
 							]
@@ -1033,12 +1064,12 @@
 								{
 									"key": "page",
 									"value": null,
-									"description": "number"
+									"description": "number>0"
 								},
 								{
 									"key": "itemsPerPage",
 									"value": null,
-									"description": "number"
+									"description": "number>0"
 								},
 								{
 									"key": "isDeleted",
@@ -1208,19 +1239,23 @@
 							"query": [
 								{
 									"key": "page",
-									"value": null
+									"value": null,
+									"description": "number>0"
 								},
 								{
 									"key": "itemsPerPage",
-									"value": null
+									"value": null,
+									"description": "number>0"
 								},
 								{
 									"key": "isDeleted",
-									"value": null
+									"value": null,
+									"description": "boolean | 0 | 1"
 								},
 								{
 									"key": "includeDeleted",
-									"value": null
+									"value": null,
+									"description": "boolean | 0 | 1"
 								},
 								{
 									"key": "query",
@@ -1348,19 +1383,23 @@
 							"query": [
 								{
 									"key": "page",
-									"value": null
+									"value": null,
+									"description": "number>0"
 								},
 								{
 									"key": "itemsPerPage",
-									"value": null
+									"value": null,
+									"description": "number>0"
 								},
 								{
 									"key": "isDeleted",
-									"value": null
+									"value": null,
+									"description": "boolean | 0 | 1"
 								},
 								{
 									"key": "includeDeleted",
-									"value": null
+									"value": null,
+									"description": "boolean | 0 | 1"
 								},
 								{
 									"key": "query",
@@ -1529,19 +1568,23 @@
 							"query": [
 								{
 									"key": "page",
-									"value": null
+									"value": null,
+									"description": "number>0"
 								},
 								{
 									"key": "itemsPerPage",
-									"value": null
+									"value": null,
+									"description": "number>0"
 								},
 								{
 									"key": "isDeleted",
-									"value": null
+									"value": null,
+									"description": "boolean | 0 | 1"
 								},
 								{
 									"key": "includeDeleted",
-									"value": null
+									"value": null,
+									"description": "boolean | 0 | 1"
 								},
 								{
 									"key": "query",
@@ -1664,19 +1707,23 @@
 							"query": [
 								{
 									"key": "page",
-									"value": null
+									"value": null,
+									"description": "number>0"
 								},
 								{
 									"key": "itemsPerPage",
-									"value": null
+									"value": null,
+									"description": "number>0"
 								},
 								{
 									"key": "isDeleted",
-									"value": null
+									"value": null,
+									"description": "boolean | 0 | 1"
 								},
 								{
 									"key": "includeDeleted",
-									"value": null
+									"value": null,
+									"description": "boolean | 0 | 1"
 								},
 								{
 									"key": "query",
